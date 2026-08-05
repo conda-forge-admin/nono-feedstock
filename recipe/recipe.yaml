@@ -46,6 +46,8 @@ tests:
   - package_contents:
       bin:
         - nono
+      files:
+        - etc/pixi/nono/global-ignore-conda-prefix
       strict: true
 
 about:
