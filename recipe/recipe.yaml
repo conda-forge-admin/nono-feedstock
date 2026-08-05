@@ -26,7 +26,7 @@ build:
           - cargo auditable install --locked --no-track --bins --root ${{ PREFIX }} --path crates/nono-cli
         else:
           - mkdir "%PREFIX%\etc\pixi\nono"
-          - type nul > "%PREFIX%\\etc\\pixi\\nono\\global-ignore-conda-prefix"
+          - type nul > "%PREFIX%\etc\pixi\nono\global-ignore-conda-prefix"
           - cargo auditable install --locked --no-track --bins --root %LIBRARY_PREFIX% --path crates/nono-cli
       - cargo-bundle-licenses --format yaml --output ./THIRDPARTY.yml
 
