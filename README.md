@@ -13,7 +13,7 @@ Development: https://github.com/nolabs-ai/nono
 
 Documentation: https://nono.sh/docs
 
-nono provides OS-enforced sandboxing where unauthorized operations are structurally impossible. 
+nono provides OS-enforced sandboxing where unauthorized operations are structurally impossible.
 Once a sandbox is applied, there is no API to expand permissions - the kernel enforces all restrictions.
 
 Current build status
