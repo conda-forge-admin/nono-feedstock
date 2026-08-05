@@ -10,7 +10,7 @@ source:
   sha256: 1d2a946a0d4864d95a2835cbc764bc1e0a91237242c5e0cef9ef81abebfc4a3d
 
 build:
-  number: 0
+  number: 1
   skip: win
   script:
     env:
@@ -19,8 +19,14 @@ build:
     content:
       - if: unix
         then:
+          # Tell `pixi global` to not set CONDA_PREFIX during activation
+          # https://pixi.sh/dev/global_tools/introduction/#opt-out-of-conda_prefix
+          - mkdir -p "${PREFIX}/etc/pixi/ty"
+          - touch "${PREFIX}/etc/pixi/ty/global-ignore-conda-prefix"
           - cargo auditable install --locked --no-track --bins --root ${{ PREFIX }} --path crates/nono-cli
         else:
+          - if not exist "%PREFIX%\\etc\\pixi" mkdir "%PREFIX%\\etc\\pixi\\ty"
+          - type nul > "%PREFIX%\\etc\\pixi\\ty\\global-ignore-conda-prefix"
           - cargo auditable install --locked --no-track --bins --root %LIBRARY_PREFIX% --path crates/nono-cli
       - cargo-bundle-licenses --format yaml --output ./THIRDPARTY.yml
 
@@ -46,7 +52,7 @@ about:
   homepage: https://nono.sh/
   summary: Capability-based sandboxing library using Landlock (Linux) and Seatbelt (macOS).
   description: |
-    nono provides OS-enforced sandboxing where unauthorized operations are structurally impossible. 
+    nono provides OS-enforced sandboxing where unauthorized operations are structurally impossible.
     Once a sandbox is applied, there is no API to expand permissions - the kernel enforces all restrictions.
   license: Apache-2.0
   license_file:
