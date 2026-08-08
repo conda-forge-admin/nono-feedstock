@@ -1,5 +1,5 @@
 context:
-  version: "0.71.0"
+  version: "0.72.0"
 
 package:
   name: nono
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/nolabs-ai/nono/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 1d2a946a0d4864d95a2835cbc764bc1e0a91237242c5e0cef9ef81abebfc4a3d
+  sha256: 325b1f9a671c5dc75cc5eb1e54ac0dbafa0b067a5fc8ceb375d42654fe547a04
 
 build:
-  number: 1
+  number: 0
   skip: win
   script:
     env:
